@@ -1,16 +1,7 @@
 import react from "react";
 import styles from "./Track.module.css";
 
-const track = {
-    imageSrc:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6BVjRY7CLNQOcjAAnGKyHzwrriN-NKrBrEw&s",
-    name: "Golddust",
-    artist: "Smithereens",
-    listens: 2000,
-};
-
-
-const Track = () => {
+const Track = ({ track }) => {
     return (
         <div className={styles.Track}>
             <div className={styles.imageContainer}>
@@ -24,5 +15,7 @@ const Track = () => {
         </div>
     );
 };
+
+// add listens etc
 
 export default Track;
