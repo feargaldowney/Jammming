@@ -1,5 +1,5 @@
 import React, {useCallback } from "react";
-import styles from "./Playlist.module.css";
+import  "./Playlist.css";
 
 import Tracklist from "../Tracklist/Tracklist";
 

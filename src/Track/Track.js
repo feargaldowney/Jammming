@@ -1,5 +1,5 @@
-import react, {useCallback} from "react";
-import styles from "./Track.module.css";
+import React, {useCallback} from "react";
+import "./Track.css";
 
 const Track = (props) => {
     const addTrack = useCallback(
@@ -31,16 +31,18 @@ const Track = (props) => {
         );
     };
     return (
-        <div className={styles.Track}>
-            <div className={styles.imageContainer}>
-                <img src={props.track.imageSrc} alt = ""/>
-            </div>
-            <h2>{props.track.name}</h2>
-            <div className={styles.TrackInformation}>
+        <div className="Track">
+            <div className="Track-information">
+                <h3>{props.track.name}</h3>
                 <p>{props.track.artist}</p>
                 <p>{props.track.album}</p>
             </div>
+            <div className="Track-image">
+                <img src={props.track.imageSrc} alt = ""/>
+            </div>
+            {renderAction()}
         </div>
+        
     );
 };
 
