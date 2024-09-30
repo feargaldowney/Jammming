@@ -1,34 +1,25 @@
-import react from "react";
-import styles from "./SearchBar.module.css";
+import React, { useState, useCallback } from "react";
+import "./SearchBar.module.css";
 
-const sortByOptions = {
-    "Best Match": "best_match",
-    "Highest Rated": "rating",
-    "Most Reviewed": "review_count",
-  };
-  
-  const SearchBar = () => {
-    const renderSortByOptions = () => {
-      return Object.keys(sortByOptions).map((sortByOption) => {
-        let sortByOptionValue = sortByOptions[sortByOption];
-        return <li key={sortByOptionValue}>{sortByOption}</li>;
-      });
-    };
-  
-    return (
-      <div className={styles.SearchBar}>
-        <div className={styles.SearchBarSortOptions}>
-          <ul>{renderSortByOptions()}</ul>
-        </div>
-        <div className={styles.SearchBarFields}>
-          <input placeholder="Search track" />
-          <input placeholder="Search artist" />
-        </div>
-        <div className={styles.SearchBarSubmit}>
-          <a>Let's Go</a>
-        </div>
-      </div>
-    );
-  };
-  
-  export default SearchBar;
+const SearchBar = (props) => {
+  const [term, setTerm] = useState("");
+
+  const handleTermChange = useCallback((event) => {
+    setTerm(event.target.value);
+  }, []);
+
+  const search = useCallback(() => {
+    props.onSearch(term);
+  }, [props.onSearch, term]);
+
+  return (
+    <div className="SearchBar">
+      <input placeholder="Enter A Song Title" onChange={handleTermChange} />
+      <button className="SearchButton" onClick={search}>
+        SEARCH
+      </button>
+    </div>
+  );
+};
+
+export default SearchBar;
